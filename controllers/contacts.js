@@ -14,8 +14,9 @@ const index = async (req, res) => {
 async function create(req, res) {
     try {
         const contact = await Contact.create(req.body);
+        req.qeury.uid = contact.uid
         res.status(201).json(contact);
-        // index(req, res);
+        index(req, res);
     } catch (error) {
         console.log(req.body)
         res.status(401).json({ error: "sorry something went wrong there" })
