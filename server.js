@@ -17,8 +17,6 @@ app.use(morgan('dev'));
 app.use(express.json()); //req.body
 app.use(cors())
 
-
-
 // mount routes
 app.use('/api/contacts', require('./routes/api/contacts'));
 
