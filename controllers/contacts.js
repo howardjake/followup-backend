@@ -13,12 +13,12 @@ const index = async (req, res) => {
 
 async function create(req, res) {
     try {
-        const contact = await Contact.create(req.body);
-        req.qeury.uid = contact.uid
-        res.status(201).json(contact);
+    const contact = await Contact.create(req.body);
+    req.query.uid = contact.uid;
         index(req, res);
     } catch (error) {
         console.log(req.body)
+        console.log(error)
         res.status(401).json({ error: "sorry something went wrong there" })
     }
 }
@@ -41,7 +41,7 @@ async function deleteOne(req, res) {
         req.query.uid = deletedContact.uid;
         index(req, res);
     } catch (error) {
-        es.status(401).json({ error: 'something went wrong' });
+        res.status(401).json({ error: 'something went wrong' });
     }
 }
 
