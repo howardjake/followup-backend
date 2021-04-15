@@ -3,7 +3,7 @@ const Contact = require('../models/contact');
 
 const index = async (req, res) => {
     try {
-        const contact = await Contact.find({uid: req.query.uid});
+        const contact = await Contact.find({uid: req.query.uid}).sort('lastContacted');
         res.json(contact);
     } catch (error) {
         console.log(error);
